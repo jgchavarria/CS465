@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -14,10 +15,33 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// register handlebars partials (header and footer)
-hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
+// register handlebars partials (header and footer) synchronously so they are
+// guaranteed to exist before the first request is served
+var partialsDir = path.join(__dirname, 'app_server', 'views', 'partials');
+fs.readdirSync(partialsDir)
+  .filter(function(file) { return path.extname(file) === '.hbs'; })
+  .forEach(function(file) {
+    hbs.registerPartial(
+      path.basename(file, '.hbs'),
+      fs.readFileSync(path.join(partialsDir, file), 'utf8')
+    );
+  });
 // helper used by the partials to mark the current nav item
 hbs.registerHelper('eq', (a, b) => a === b);
+// format an ISO date string from trips.json, e.g. "February 15, 2026"
+hbs.registerHelper('formatDate', (iso) => {
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC'
+  });
+});
+// format a price string/number from trips.json as US currency
+hbs.registerHelper('formatPrice', (amount) => {
+  const n = Number(amount);
+  if (isNaN(n)) return amount;
+  return n.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+});
 
 app.set('view engine', 'hbs');
 

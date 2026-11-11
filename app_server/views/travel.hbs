@@ -1,22 +1,28 @@
 <div id="contents">
-				<div class="box">
-					<div>
-						<div class="body">
-							<h1>Travel</h1>
-							<ul id="sites">
-								{{#each trips}}
-								<li>
-									<a href="/travel"><img src="/images/{{image}}" alt="{{name}}"></a>
-									<h2><a href="/travel">{{name}}</a></h2>
-									{{#each description}}
-									<p>
-										{{this}}
-									</p>
-									{{/each}}
-								</li>
-								{{/each}}
-							</ul>
-						</div>
-					</div>
-				</div>
+	<div class="box">
+		<div>
+			<div class="body">
+				<h1>Travel</h1>
+				<ul id="sites">
+					{{#each trips}}
+					<li class="trip" data-code="{{code}}">
+						<a href="/travel"><img src="/images/{{image}}" alt="{{name}}"></a>
+						<h2><a href="/travel">{{name}}</a></h2>
+						<dl class="trip-details">
+							<dt>Length</dt><dd>{{length}}</dd>
+							<dt>Departs</dt><dd>{{formatDate start}}</dd>
+							<dt>Resort</dt><dd>{{resort}}</dd>
+							<dt>Per person</dt><dd>{{formatPrice perPerson}}</dd>
+						</dl>
+						{{#each description}}
+						<p>{{this}}</p>
+						{{/each}}
+					</li>
+					{{else}}
+					<li class="no-trips"><p>No trips are available right now. Please check back soon.</p></li>
+					{{/each}}
+				</ul>
 			</div>
+		</div>
+	</div>
+</div>

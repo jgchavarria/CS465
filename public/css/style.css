@@ -543,3 +543,22 @@ hr {
 #connect a.googleplus:hover {
 	background-position: 0 -197px;
 }
+/** Trip details (travel page, data from trips.json) **/
+#sites .trip-details {
+	margin: 0 0 15px;
+	overflow: hidden;
+}
+#sites .trip-details dt {
+	float: left;
+	clear: left;
+	width: 100px;
+	color: #5a4535;
+	font-weight: bold;
+}
+#sites .trip-details dd {
+	margin: 0 0 4px 100px;
+	color: #316e66;
+}
+#sites li.no-trips img {
+	display: none;
+}
