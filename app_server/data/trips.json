@@ -37,5 +37,44 @@
       "Donec sed felis risus. Nulla facilisi. Donec a orci tellus, et auctor odio. Fusce ac orci nibh, quis semper arcu. Cras orci neque, euismod et accumsan ac, sagittis molestie lorem. Proin odio sapien, elementum at tempor non.",
       "Vulputate eget libero. In hac habitasse platea dictumst. Integer purus justo, egestas eu consectetur eu, cursus in tortor. Quisque nec nunc ac mi ultrices iaculis."
     ]
+  },
+  {
+    "code": "SEAS150515",
+    "name": "Sea Sound Cruise",
+    "length": "4 nights / 5 days",
+    "start": "2027-05-15T00:00:00.000Z",
+    "resort": "Harbor View, All Inclusive",
+    "perPerson": "899.00",
+    "image": "sea-sound.jpg",
+    "description": [
+      "Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida.",
+      "Etiam convallis mi vel risus pretium sodales. Etiam nunc lorem ullamcorper vitae laoreet."
+    ]
+  },
+  {
+    "code": "KAYK200615",
+    "name": "Kayak Coast",
+    "length": "3 nights / 4 days",
+    "start": "2027-06-20T00:00:00.000Z",
+    "resort": "Driftwood Lodge, Bed & Breakfast",
+    "perPerson": "649.00",
+    "image": "kayak.jpg",
+    "description": [
+      "Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida.",
+      "Etiam convallis mi vel risus pretium sodales. Etiam nunc lorem ullamcorper vitae laoreet."
+    ]
+  },
+  {
+    "code": "DIVE180715",
+    "name": "Deep Dive Site",
+    "length": "6 nights / 7 days",
+    "start": "2027-07-18T00:00:00.000Z",
+    "resort": "Reef Edge, Dive Resort",
+    "perPerson": "1399.00",
+    "image": "dive-site.png",
+    "description": [
+      "Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida.",
+      "Etiam convallis mi vel risus pretium sodales. Etiam nunc lorem ullamcorper vitae laoreet."
+    ]
   }
 ]

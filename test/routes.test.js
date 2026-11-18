@@ -1,5 +1,6 @@
 // Smoke tests: every route renders, and /travel is built from trips.json.
 // Run with: npm test   (uses Node's built-in test runner, no extra packages)
+process.env.NODE_ENV = 'test'; // keep db.js from connecting during route tests
 const test = require('node:test');
 const assert = require('node:assert');
 const http = require('http');
@@ -67,4 +68,18 @@ test('every trip image exists in public/images', () => {
 test('unknown route returns 404', async () => {
   const { status } = await get('/nope');
   assert.strictEqual(status, 404);
+});
+
+// --- Module Four: Trip schema validation (no database required) ---
+const Trip = require('mongoose').model('trips');
+
+test('every trip in trips.json passes Trip schema validation', async () => {
+  for (const t of trips) await new Trip(t).validate();
+});
+
+test('Trip schema rejects missing/invalid fields', async () => {
+  const err = await new Trip({ code: 'bad', perPerson: -5, description: [] }).validate().catch((e) => e);
+  for (const f of ['code', 'name', 'length', 'start', 'resort', 'perPerson', 'image', 'description']) {
+    assert.ok(err.errors[f], `expected validation error for ${f}`);
+  }
 });

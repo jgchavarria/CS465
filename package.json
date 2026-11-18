@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "seed": "node scripts/seed.js",
+    "trips": "node scripts/show-trips.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,6 +14,7 @@
     "express": "~4.16.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
+    "mongoose": "^8.24.10",
     "morgan": "~1.9.1"
   }
 }
